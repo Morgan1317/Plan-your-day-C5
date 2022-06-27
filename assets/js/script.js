@@ -13,7 +13,7 @@ var time = 9;
 // this for loop works to put the times 9-5 in their correct place 
 for ( i=0; i<timeArray.length; i++){
     $(timeArray[i]).attr('class','hour col-2');
-    m = moment().set('hour',time).format('h');
+    m = moment().set('hour',time).format('h a');
     $(timeArray[i]).append(m);
     time++
 
@@ -26,7 +26,7 @@ var whatTimeIsIt = function() {
 
     for ( i=0; i<timeArray.length; i++){
       
-    // apply new class if depending on current time and listed times
+    // apply new class to determine the color the text area should be  if depending on current time and listed times
         var timeText = [9, 10, 11, 12, 13, 14, 15, 16, 17];
         var currentMoment = new Date();
         textArea = $("textarea")
@@ -55,3 +55,5 @@ var whatTimeIsIt = function() {
       whatTimeIsIt($(this));
     });
   }, 1000);
+
+  whatTimeIsIt();
