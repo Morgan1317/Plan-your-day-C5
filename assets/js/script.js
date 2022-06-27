@@ -13,10 +13,9 @@ var time = 9;
 // this for loop works to put the times 9-5 in their correct place 
 for ( i=0; i<timeArray.length; i++){
     $(timeArray[i]).attr('class','hour col-2');
-    m = moment().set('hour',time).format('h a');
+    m = moment().set('hour',time).format('h');
     $(timeArray[i]).append(m);
     time++
-    console.log(m)
 
 };
 
@@ -28,22 +27,19 @@ var whatTimeIsIt = function() {
     for ( i=0; i<timeArray.length; i++){
       
     // apply new class if depending on current time and listed times
-        var timeText = timeArray[i].innerText
-        var currentMoment = moment().startOf('hour').format('h a');
-        // mCompare= moment().set('hour',time).format('h a');
-        // time++
-        momentCheck = moment().set('hour',24).format('h a');
+        var timeText = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+        var currentMoment = new Date();
         textArea = $("textarea")
-        if (currentMoment===timeText ){
+        if (currentMoment.getHours()==timeText[i] ){
             $(textArea[i]).removeClass("future")
             $(textArea[i]).removeClass("past")
             $(textArea[i]).addClass("present")
         }   
-        else if(currentMoment>timeText ){
+        else if(currentMoment.getHours()>timeText[i] ){
             $(textArea[i]).removeClass("future")
             $(textArea[i]).removeClass("present")
             $(textArea[i]).addClass("past");
-        } else if (currentMoment<timeText){
+        } else if (currentMoment.getHours()<timeText[i]){
             $(textArea[i]).removeClass("past")
             $(textArea[i]).removeClass("present")
             $(textArea[i]).addClass("future")
