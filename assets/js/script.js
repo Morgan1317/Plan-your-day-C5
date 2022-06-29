@@ -63,130 +63,96 @@ var whatTimeIsIt = function() {
 // when click on this save button, the collect both the user input and the id attached to the button that was clicked
 
 $('.saveBtn').on('click',function(){
+  
     var userInput = {
         input: $(this).prev().val(),
         id: $(this).prev().prev().attr('id')
         
     };
-    // depending on the corresponding id, switch to save the input, with the corresponding time box
-    switch(userInput.id){
-        case 'nine':
-            arrayNine = JSON.parse(localStorage.getItem('input'));
-            if(!arrayNine){
-                arrayNine = [];
-            };
-            arrayNine.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayNine));
-            console.log(arrayNine);
-            break;
-        case 'ten':
-            arrayTen = JSON.parse(localStorage.getItem('input'));
-            if(!arrayTen){
-                arrayTen = [];
-            };
+    
+    // push object into local storage
+    userArray = JSON.parse(localStorage.getItem('input'));
+    if(!userArray){
+        userArray = [];
+    };
+    userArray.push(userInput);
+    localStorage.setItem('input',JSON.stringify(userArray));
+          
+        
+   
 
-            arrayTen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayTen));
-            console.log(arrayTen);
-            break;
-        case 'eleven': 
-            arrayEleven = JSON.parse(localStorage.getItem('input'));
-            if(!arrayEleven){
-                arrayEleven = [];
-            };
+     
 
-            arrayEleven.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayEleven));
-            console.log(arrayEleven);
-            break;
-        case 'twelve':
-            arrayTwelve = JSON.parse(localStorage.getItem('input'));
-            if(!arrayTwelve){
-                arrayTwelve = [];
-            };
-
-            arrayTwelve.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayTwelve));
-            console.log(arrayTwelve);
-            break;
-        case 'thirteen':
-            arrayThirteen = JSON.parse(localStorage.getItem('input'));
-            if(!arrayThirteen){
-                arrayThirteen = [];
-            };
-
-            arrayThirteen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayThirteen));
-            console.log(arrayThirteen);
-            break;
-        case 'fourteen':
-            arrayFourteen = JSON.parse(localStorage.getItem('input'));
-            if(!arrayFourteen){
-                arrayFourteen = [];
-            };
-
-            arrayFourteen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayFourteen));
-            console.log(arrayFourteen);
-            break;
-        case 'fifteen':
-            arrayFifteen = JSON.parse(localStorage.getItem('input'));
-            if(!arrayFifteen){
-                arrayFifteen = [];
-            };
-
-            arrayFifteen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arrayFifteen));
-            console.log(arrayFifteen);
-            break;
-        case 'sixteen': 
-            arraySixteen = JSON.parse(localStorage.getItem('input'));
-            if(!arraySixteen){
-                arraySixteen = [];
-            };
-
-            arraySixteen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arraySixteen));
-            console.log(arraySixteen);
-            break;
-        case 'seventeen':
-            arraySeventeen = JSON.parse(localStorage.getItem('input'));
-            if(!arraySeventeen){
-                arraySeventeen = [];
-            };
-
-            arraySeventeen.push(userInput);
-            localStorage.setItem('input',JSON.stringify(arraySeventeen));
-            console.log(arraySeventeen);
-            break;
-    }
 }); 
+// userArray = JSON.parse(window.localStorage.getItem('input'));
+    
 
 // load previously stored data onto screen when page is loaded. 
 var loadInputs = function() {
-    userInput = JSON.parse(localStorage.getItem("input"));
-    if(!userInput){
-        userInput = {
+    userArray = JSON.parse(localStorage.getItem("input"));
+    // if there is no user input yet, set to empty string
+    if(!userArray){
+        userArray = {
             input:'',
             id: ''
         };
     };
-    userInput = JSON.parse(window.localStorage.getItem('input'));
-};
-    
+
+    $.each(userArray, function(input, id) {
+        
+        // then loop over sub-array to determine input based on id and return text to rightful place
+        userArray.forEach(function(userInput) {
+                
+            switch(userInput.id){
+                case 'nine':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'ten':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'eleven': 
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'twelve':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'thirteen':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'fourteen':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'fifteen':
+                    userArray = userArray.slice(-1);
+                    break;
+                case 'sixteen': 
+                    userArray = userArray.slice(-1);
+                    console.log(userArray);
+                    console.log(userArray[0].input)
+                    break;
+                case 'seventeen':
+                    userArray = userArray.slice(-1);
+                    console.log(userArray[0].input)
+                    break;
+            
+            };
+        }
+    )}
+)};
+            
+                
+
+
 loadInputs();
-
-
-
-
-    
-
-
-
-
-
-
-    
-
-
-
