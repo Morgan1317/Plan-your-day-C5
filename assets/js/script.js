@@ -89,6 +89,7 @@ $('.saveBtn').on('click',function(){
 
 // load previously stored data onto screen when page is loaded. 
 var loadInputs = function() {
+    debugger; 
     userArray = JSON.parse(localStorage.getItem("input"));
     // if there is no user input yet, set to empty string
     if(!userArray){
@@ -98,61 +99,70 @@ var loadInputs = function() {
         };
     };
 
-    $.each(userArray, function(input, id) {
+    // $.each(userArray, function(input, id) {
         
-        // then loop over sub-array to determine input based on id and return text to rightful place
-        userArray.forEach(function(userInput) {
-                
-            switch(userInput.id){
+    //     // then loop over sub-array to determine input based on id and return text to rightful place
+    //     userArray.forEach(function(userInput) {
+            
+        for (i = 0; i<userArray.length; i++){
+     
+ 
+            switch(userArray[i].id){
                 case 'nine':
-                    userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[0].input)
+                    // userArray = userArray.slice(-1);
+                    console.log(userArray[i].input);
+                    $('#nine').next().text(userArray[i].input)
                     break;
                 case 'ten':
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#ten').next().text(userArray[i].input)
                     break;
                 case 'eleven': 
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#eleven').next().text(userArray[i].input)
                     break;
                 case 'twelve':
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#twelve').next().text(userArray[i].input)
                     break;
                 case 'thirteen':
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#thirteen').next().text(userArray[i].input)
                     break;
                 case 'fourteen':
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#fourteen').next().text(userArray[i].input)
                     break;
                 case 'fifteen':
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
+                    $('#fifteen').next().text(userArray[i].input)
                     break;
                 case 'sixteen': 
-                    userArray = userArray.slice(-1);
+                    // userArray = userArray.slice(-1);
                     console.log(userArray);
-                    console.log(userArray[0].input)
+                    console.log(userArray[i].input)
+                    $('#sixteen').next().text(userArray[i].input)
                     break;
                 case 'seventeen':
-                    userArray = userArray.slice(-1);
-                    console.log(userArray[0].input)
+                    // userArray = userArray.slice(-1);
+                    console.log(userArray[i].input)
+                    $('#seventeen').next().text(userArray[i].input)
                     break;
             
             };
         }
-    )}
-)};
-            
-                
+      
+    }    
 
 
 loadInputs();
