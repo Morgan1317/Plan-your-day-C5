@@ -50,7 +50,7 @@ var whatTimeIsIt = function() {
 
   };
 
-  // runs time check every minute
+  // runs time check every minute so colors can be updated accordingly 
     setInterval(function() {
     $("textArea").each(function() {
       whatTimeIsIt($(this));
@@ -77,19 +77,12 @@ $('.saveBtn').on('click',function(){
     };
     userArray.push(userInput);
     localStorage.setItem('input',JSON.stringify(userArray));
-          
-        
-   
-
-     
-
 }); 
-// userArray = JSON.parse(window.localStorage.getItem('input'));
+
     
 
 // load previously stored data onto screen when page is loaded. 
 var loadInputs = function() {
-    debugger; 
     userArray = JSON.parse(localStorage.getItem("input"));
     // if there is no user input yet, set to empty string
     if(!userArray){
@@ -99,69 +92,43 @@ var loadInputs = function() {
         };
     };
 
-    // $.each(userArray, function(input, id) {
+
+   // looks at what is in storage and assigns it to the appropriate text area depending on the ID that is assigned to it.  
+    for (i = 0; i<userArray.length; i++){
+    
+
+        switch(userArray[i].id){
+            case 'nine':
+                $('#nine').next().text(userArray[i].input)
+                break;
+            case 'ten':
+                $('#ten').next().text(userArray[i].input)
+                break;
+            case 'eleven': 
+                $('#eleven').next().text(userArray[i].input)
+                break;
+            case 'twelve':
+                $('#twelve').next().text(userArray[i].input)
+                break;
+            case 'thirteen':
+                $('#thirteen').next().text(userArray[i].input)
+                break;
+            case 'fourteen':
+                $('#fourteen').next().text(userArray[i].input)
+                break;
+            case 'fifteen':
+                $('#fifteen').next().text(userArray[i].input)
+                break;
+            case 'sixteen': 
+                $('#sixteen').next().text(userArray[i].input)
+                break;
+            case 'seventeen':
+                $('#seventeen').next().text(userArray[i].input)
+                break;
         
-    //     // then loop over sub-array to determine input based on id and return text to rightful place
-    //     userArray.forEach(function(userInput) {
-            
-        for (i = 0; i<userArray.length; i++){
-     
- 
-            switch(userArray[i].id){
-                case 'nine':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray[i].input);
-                    $('#nine').next().text(userArray[i].input)
-                    break;
-                case 'ten':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#ten').next().text(userArray[i].input)
-                    break;
-                case 'eleven': 
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#eleven').next().text(userArray[i].input)
-                    break;
-                case 'twelve':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#twelve').next().text(userArray[i].input)
-                    break;
-                case 'thirteen':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#thirteen').next().text(userArray[i].input)
-                    break;
-                case 'fourteen':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#fourteen').next().text(userArray[i].input)
-                    break;
-                case 'fifteen':
-                    // userArray = userArray.slice(-1);
-                    $('#fifteen').next().text(userArray[i].input)
-                    break;
-                case 'sixteen': 
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray);
-                    console.log(userArray[i].input)
-                    $('#sixteen').next().text(userArray[i].input)
-                    break;
-                case 'seventeen':
-                    // userArray = userArray.slice(-1);
-                    console.log(userArray[i].input)
-                    $('#seventeen').next().text(userArray[i].input)
-                    break;
-            
-            };
-        }
-      
+        };
+    }
+    
     }    
 
 
